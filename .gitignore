@@ -1,0 +1,37 @@
+# Build results
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.log
+*.db
+*.db-shm
+*.db-wal
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Rider / JetBrains IDE
+.idea/
+
+# Mac / Linux system files
+.DS_Store
+Thumbs.db
+
+# ASP.NET Core config
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json   # ignore all variants
+!appsettings.json    # but keep the default template
+
+# Entity Framework
+*.mdf
+*.ldf
+Migrations/
+
+# Other temp/debug
+launchSettings.json
+.env
