@@ -34,16 +34,28 @@ namespace Fundsy_backend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(LoginDTO data)
+        public async Task<ActionResult<TokenResponseDTO>> Login(LoginDTO data)
         {
-            var token=await _authService.LoginAsync(data);
+            var response = await _authService.LoginAsync(data);
 
-            if(token == null)
+            if (response == null)
             {
                 return BadRequest("Invalid email or password.");
             }
 
-            return Ok(token);
+            return Ok(response);
+        }
+
+        [HttpPost("refresh-tokens")]
+        public async Task<ActionResult<TokenResponseDTO>> RefreshToken(RefreshTokenRequestDTO data)
+        {
+            var result = await _authService.RefreshTokensAsync(data);
+            if (result == null || result.AccessToken == null || result.RefreshToken == null)
+            {
+                return Unauthorized("Invalid refrsh token");
+            }
+
+            return Ok(result);
         }
     }
 }

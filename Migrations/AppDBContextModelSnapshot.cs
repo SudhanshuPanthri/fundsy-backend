@@ -58,6 +58,22 @@ namespace Fundsy_backend.Migrations
                     b.ToTable("Payments");
                 });
 
+            modelBuilder.Entity("Fundsy_backend.Models.PaymentStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("status")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentStatuses");
+                });
+
             modelBuilder.Entity("Fundsy_backend.Models.Project", b =>
                 {
                     b.Property<byte[]>("Id")
@@ -109,6 +125,38 @@ namespace Fundsy_backend.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("Fundsy_backend.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("role")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("Fundsy_backend.Models.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("status")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
+                });
+
             modelBuilder.Entity("Fundsy_backend.Models.User", b =>
                 {
                     b.Property<byte[]>("Id")
@@ -125,6 +173,13 @@ namespace Fundsy_backend.Migrations
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<string>("Refresh_Token")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Refresh_Token_Expiry_Time")
+                        .HasColumnType("datetime");
 
                     b.Property<int>("Role_id")
                         .HasColumnType("int");
