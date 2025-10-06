@@ -9,6 +9,9 @@ namespace Fundsy_backend.Data
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<PaymentStatus> PaymentStatuses { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

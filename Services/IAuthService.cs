@@ -5,8 +5,8 @@ namespace Fundsy_backend.Services
 {
     public interface IAuthService
     {
-        string CreateToken(User user);
-        Task<User> RegisterAsync(RegisterDTO data);
-        Task<string?> LoginAsync(LoginDTO data);
+        Task<User?> RegisterAsync(RegisterDTO data);
+        Task<TokenResponseDTO?> LoginAsync(LoginDTO data);
+        Task<TokenResponseDTO?> RefreshTokensAsync(RefreshTokenRequestDTO data);
     }
 }

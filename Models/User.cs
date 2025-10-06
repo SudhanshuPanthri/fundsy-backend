@@ -18,6 +18,10 @@ namespace Fundsy_backend.Models
         public int Role_id { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        [Column(TypeName = "longtext")]
+        public string Refresh_Token { get; set; } = String.Empty;
+        [Column(TypeName = "datetime")]
+        public DateTime Refresh_Token_Expiry_Time { get; set; }
         public ICollection<Project> Projects { get; set; } = new List<Project>();
         public ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
