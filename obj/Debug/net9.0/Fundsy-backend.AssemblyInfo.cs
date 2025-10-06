@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fundsy-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5f71257fecf50678a3aa7b784d8c241b65622e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fundsy-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fundsy-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
