@@ -6,5 +6,6 @@ namespace Fundsy_backend.Services
     {
         Task<List<Role>> GetRolesAsync();
         Task<List<Status>> GetStatusesAsync();
+        Task<List<Category>> GetCategoriesAsync();
     }
 }

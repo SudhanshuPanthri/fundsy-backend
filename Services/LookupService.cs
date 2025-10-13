@@ -30,5 +30,15 @@ namespace Fundsy_backend.Services
             }
             return data;
         }
+
+        public async Task<List<Category>> GetCategoriesAsync()
+        {
+            var data=await _context.Categories.ToListAsync();
+            if (data == null)
+            {
+                return new List<Category>();
+            }
+            return data;
+        }
     }
 }

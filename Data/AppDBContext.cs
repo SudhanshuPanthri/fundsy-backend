@@ -12,6 +12,7 @@ namespace Fundsy_backend.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<PaymentStatus> PaymentStatuses { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
