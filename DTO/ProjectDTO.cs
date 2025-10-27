@@ -8,5 +8,6 @@
         public int CategoryId { get; set; }
         public string ProjectImage { get; set; } = string.Empty;
         public string UserEmail { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
     }
 }

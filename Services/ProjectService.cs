@@ -49,5 +49,70 @@ namespace Fundsy_backend.Services
                 return false;
             }
         }
+
+
+
+        #region GET API's
+
+        public async Task<List<ProjectDTO>> GetAllProjectsAsync()
+        {
+            try
+            {
+                var data = await _context.Projects.Include(x=>x.User).ToListAsync();
+                var response = data.Select(x => new ProjectDTO
+                {
+                    Title = x.Title,
+                    Description = x.Description,
+                    ProjectImage = x.Image_Url,
+                    Goal = x.Goal_Amount,
+                    UserName=x.User.UserName
+
+                }).ToList();
+
+                return response;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.InnerException);
+                return new List<ProjectDTO>();
+            }
+        }
+
+        public async Task<List<ProjectDTO>> GetAllProjectsByUserAsync(string email)
+        {
+            try
+            {
+                //find the user
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+                //get the user id and get all the projects
+                if (user != null)
+                {
+                    var data = await _context.Projects.Where(x => x.User_id == user.Id).ToListAsync();
+                    //convert Project Model to ProjectDTO
+                    var response = data.Select(x => new ProjectDTO
+                    {
+                        Title = x.Title,
+                        Description = x.Description,
+                        ProjectImage = x.Image_Url,
+                        Goal = x.Goal_Amount,
+                        UserName = x.User.UserName
+                    }).ToList();
+
+                    return response;
+                }
+                else
+                {
+                    return new List<ProjectDTO>();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.InnerException);
+                return new List<ProjectDTO>();
+            }
+        }
+
+        #endregion
     }
 }
