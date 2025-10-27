@@ -66,7 +66,7 @@ namespace Fundsy_backend.Services
 
         public async Task<TokenResponseDTO?> RefreshTokensAsync(RefreshTokenRequestDTO data)
         {
-            var user = await ValidRefreshTokenAsync(data.Id, data.RefreshToken);
+            var user = await ValidRefreshTokenAsync(data.Email!, data.RefreshToken);
             if (user == null)
             {
                 return null;
@@ -120,9 +120,9 @@ namespace Fundsy_backend.Services
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
 
-        private async Task<User?> ValidRefreshTokenAsync(Guid id, string refreshToken)
+        private async Task<User?> ValidRefreshTokenAsync(string Email, string refreshToken)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == Email);
             if (user == null || user.Refresh_Token != refreshToken || user.Refresh_Token_Expiry_Time <= DateTime.UtcNow)
             {
                 return null;
